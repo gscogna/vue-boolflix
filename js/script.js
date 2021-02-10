@@ -1,6 +1,10 @@
+const preselezione = 'https://image.tmdb.org/t/p/';
+const formato = 'w342';
+
 var app = new Vue({
     el:'#app',
     data:{
+        contenuti:[],
         query:'',
         apikey:'9c849102cf7097b31d1314854e343536',
         lang:'it-IT'
@@ -16,26 +20,11 @@ var app = new Vue({
                     }
                 })
                 .then((result) => {
-                    console.log(result.data);
+                    this.contenuti = result.data.results;
                 })
                 .catch((error)=> console.log(error));
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
 
 

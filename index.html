@@ -13,9 +13,27 @@
 </head>
 <body>
 
-    <div id="app">
-        <input type="text" v-model="query" @keyup.enter="ricerca">
-    </div>
+            <header>
+                <div class="container">
+                    <img src="img/logo.jpg" alt="logo" />
+                </div>
+            </header>
+            
+            <div id="app" class="cds-container container">
+                
+                    <div id="app">
+                        <input type="text" v-model="query"@keyup.enter="ricerca">
+                    </div>
+            
+                <div class="cd" v-for="contenuto in contenuti">
+                    <img :src="preselezione + formato + contenuto.backdrop_path" :alt="contenuto.original_title">
+                    <h3 class="title"> {{contenuto.title}} </h3>
+                    <h3 class="title"> {{contenuto.original_title}} </h3>
+                    <span class="author">{{contenuto.original_language}}</span>
+                    <span class="year"> {{contenuto.vote_average}} </span>
+                </div>
+            </div>
+
 
     <script src="js/script.js" charset="utf-8"></script>
 </body>
