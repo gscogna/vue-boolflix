@@ -1,9 +1,9 @@
-const preselezione = 'https://image.tmdb.org/t/p/';
-const formato = 'w342';
-
 var app = new Vue({
     el:'#app',
     data:{
+        alterantiveFoto:'https://pbs.twimg.com/profile_images/1006975467042328583/FESn8ZMw_400x400.jpg',
+        preselezione: 'https://image.tmdb.org/t/p/',
+        formato: 'w342',
         contenuti:[],
         query:'',
         apikey:'9c849102cf7097b31d1314854e343536',
@@ -29,14 +29,5 @@ var app = new Vue({
 
 
 
-
-// Milestone 1:
-// Creare un layout base con una searchbar(una input e un button) in cui possiamo
-// scrivere completamente o parzialmente il nome di un film.Possiamo, cliccando il
-// bottone, cercare sull’API tutti i film che contengono ciò che ha scritto l’utente.
-// Vogliamo dopo la risposta dell’API visualizzare a schermo i seguenti valori per ogni
-// film trovato:
-// 1. Titolo
-// 2. Titolo Originale
-// 3. Lingua
-// 4. Voto
+// stella a metà
+{/* <i class="far fa-star"></i> */}

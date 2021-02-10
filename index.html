@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Boolfix</title>
+    <!-- Link favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <!-- Link Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <!-- Link AXIOS/AJAX -->
@@ -12,29 +21,34 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-            <header>
-                <div class="container">
-                    <img src="img/logo.jpg" alt="logo" />
-                </div>
-            </header>
-            
-            <div id="app" class="cds-container container">
-                
-                    <div id="app">
-                        <input type="text" v-model="query"@keyup.enter="ricerca">
-                    </div>
-            
-                <div class="cd" v-for="contenuto in contenuti">
-                    <img :src="preselezione + formato + contenuto.backdrop_path" :alt="contenuto.original_title">
-                    <h3 class="title"> {{contenuto.title}} </h3>
-                    <h3 class="title"> {{contenuto.original_title}} </h3>
-                    <span class="author">{{contenuto.original_language}}</span>
-                    <span class="year"> {{contenuto.vote_average}} </span>
-                </div>
+<div id="app">
+    <header>
+        <!-- sezione logo -->
+        <div class="header-logo">
+            <img src="img/logo.png" alt="logo"/>
+        </div>
+        <!-- sezione input -->
+        <div class="header-input">
+            <input type="text" v-model="query" @keyup.enter="ricerca" placeholder="Cerca...">
+            <i class="fas fa-search"></i>
+        </div>
+    </header>
+    <main>
+        <!-- sezione contatti -->
+        <div class="cds-container container">
+            <div class="film" v-for="contenuto in contenuti">
+                <img :src="(contenuto.backdrop_path == null) ? alterantiveFoto :preselezione + formato + contenuto.backdrop_path" :alt="contenuto.title">
+                <h3 class="title"> {{contenuto.title}}</h3>
+                <span class="title"> {{contenuto.original_title}} </span>
+                <span class="lingua">{{contenuto.original_language}}</span>
+                <span class="voto">Voto: {{contenuto.vote_average}}<i class="fas fa-star"></i> </span>
             </div>
-
-
+        </div>
+    </main>
+    <footer>
+        
+    </footer>
+</div>
     <script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>
