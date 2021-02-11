@@ -13,7 +13,7 @@ body {
 h3 {
     margin: 20px 0;
     color: white;
-    font-size: 22px;
+    font-size: 18px;
     text-transform: uppercase;
 }
 
@@ -69,7 +69,7 @@ header img {
     flex-basis: 200px;
     padding: 20px;
     margin: 10px 20px;
-    height: 360px;
+    height: 460px;
     background: rgb(46, 58, 70);
     text-align: center;
     word-break: break-all;
@@ -77,6 +77,12 @@ header img {
 
 .film img {
     max-width: 100%;
+}
+
+.bandiera-size{
+    border-radius: 30%;
+    width: 50px;
+    padding: 10px 0;
 }
 
 

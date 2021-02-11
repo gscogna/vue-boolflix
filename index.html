@@ -39,9 +39,9 @@
             <div class="film" v-for="contenuto in contenuti">
                 <img :src="(contenuto.backdrop_path == null) ? alterantiveFoto :preselezione + formato + contenuto.backdrop_path" :alt="contenuto.title">
                 <h3 class="title"> {{contenuto.title}}</h3>
-                <span class="title"> {{contenuto.original_title}} </span>
-                <span class="lingua">{{contenuto.original_language}}</span>
-                <span class="voto">Voto: {{contenuto.vote_average}}<i class="fas fa-star"></i> </span>
+                <span class="title"> {{contenuto.original_title || contenuto.original_name}} </span>
+                <img  class="bandiera-size" :src="'img/' + contenuto.bandiere + '.jpeg' ">
+                <span class="voto"> {{contenuto.vote_average}}<i class="fas fa-star"></i></span>
             </div>
         </div>
     </main>
