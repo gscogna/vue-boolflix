@@ -41,13 +41,16 @@ var app = new Vue({
 
         filtroBandiere(){
             this.contenuti.forEach(element => {
-                if (!this.bandiere.includes(element.original_language)) {
+                if (this.bandiere.includes(element.original_language)) {
                     this.bandiere.push(element.original_language);
                 }
             });
         }
     }
 });
+
+
+
 
 // 'img/es.jpeg', 'img/it.jpeg', 'img/fr.jpeg', 'img/en.jpeg', 'img/pt.jpeg'
 
