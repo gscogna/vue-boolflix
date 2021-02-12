@@ -35,14 +35,18 @@
     </header>
     <main>
         <!-- sezione contatti -->
-        <div class="cds-container container">
+        <div class="films-container container">
             <div class="film" v-for="contenuto in contenuti">
-                <img :src="(contenuto.backdrop_path == null) ? alterantiveFoto :preselezione + formato + contenuto.backdrop_path" :alt="contenuto.title">
-                <h3 class="title"> {{contenuto.title}}</h3>
-                <span class="title"> {{contenuto.original_title || contenuto.original_name}} </span>
-                <img  class="bandiera-size" :src="'img/' + contenuto.original_language + '.jpeg'" :alt="contenuto.original_language">
-                <span class="voto" v-for="contenuto in filtered"> {{contenuto.vote_average/2}}</span>
-                <i class="fas fa-star"></i>
+                <img :src="(contenuto.poster_path == null) ? alterantiveFoto :preselezione + formato + contenuto.poster_path" :alt="contenuto.title">
+                <div class="layer">
+                    <h3 class="title"> {{contenuto.title}}</h3>
+                    <span class="title"> {{contenuto.original_title || contenuto.original_name}} </span>
+                    <img class="bandiera-size" :src="'img/' + contenuto.original_language + '.jpeg'" :alt="contenuto.original_language">
+                    <span class="voto">
+                        <i v-for="i in filtered(contenuto.vote_average)" class="fas fa-star"></i>
+                        <i v-for="i in filteredStar(contenuto.vote_average)" class="far fa-star"></i>
+                    </span>
+                </div>
             </div>
         </div>
     </main>
