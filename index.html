@@ -27,6 +27,15 @@
         <div class="header-logo">
             <img src="img/logo.png" alt="logo"/>
         </div>
+        <!-- sezione componenti -->
+        <div class="componenti">
+            <ul>
+                <li><a href=".">Home</a></li>
+                <li><a href="#">Film</a></li>
+                <li><a href="#">Serie Tv</a></li>
+                <li><a href="#">Lista Personale</a></li>
+            </ul>
+        </div>
         <!-- sezione input -->
         <div class="header-input">
             <input type="text" v-model="query" @keyup.enter="ricerca" placeholder="Cerca...">
@@ -34,21 +43,58 @@
         </div>
     </header>
     <main>
-        <!-- sezione contatti -->
-        <div class="films-container container">
-            <div class="film" v-for="contenuto in contenuti">
-                <img :src="(contenuto.poster_path == null) ? alterantiveFoto :preselezione + formato + contenuto.poster_path" :alt="contenuto.title">
-                <div class="layer">
-                    <h3 class="title"> {{contenuto.title}}</h3>
-                    <span class="title"> {{contenuto.original_title || contenuto.original_name}} </span>
-                    <img class="bandiera-size" :src="'img/' + contenuto.original_language + '.jpeg'" :alt="contenuto.original_language">
-                    <span class="voto">
-                        <i v-for="i in filtered(contenuto.vote_average)" class="fas fa-star"></i>
-                        <i v-for="i in filteredStar(contenuto.vote_average)" class="far fa-star"></i>
-                    </span>
+        <!-- sezione slider -->
+        <section class="slider">
+            <div id="format" class="container_slider">
+                <div class="slider-wrapper">
+                    <!-- slider -->
+                    <div class="images">
+                        <img :src="foto[contatore]" alt="">
+                    </div>
+                </div>
+                <div class="slider-wrapper">
+                    <!-- slider -->
+                    <div class="images">
+                        <img :src="foto2[contatore]" alt="">
+                    </div>
+                <div class="nav">
+                    <!-- ciclo v-for combinato con l indice -->
+                    <span class="trattino" v-for="(immagine,index) in foto" :class="(index == contatore) ? 'active' : '' "
+                        @click="cambio(index)"></span>
+                </div>
                 </div>
             </div>
-        </div>
+            <div class="info">
+                <h2>Avviso Importante</h2>
+                <p>Il Genio dello Streaming torna alle origini.<br> L'originale è solo: <span id="blue">Gerrano marcello e la boolean classe24!!</span><br>
+                    Diffidate dalle imitazioni!<br>
+                    Per continuare a seguirci senza censure date un'occhiata qui</p>
+            </div>
+        </section>
+        <select id="selettore" v-model="genereSelect">
+            <option></option>
+        </select>
+
+        <!-- sezione contatti -->
+        <section class="contatti">
+            <div class="films-container container">
+                <div class="film" v-for="contenuto in contenuti">
+                    <img :src="(contenuto.backdrop_path == null) ? alterantiveFoto :preselezione + formato + contenuto.backdrop_path" :alt="contenuto.title">
+                    <div class="layer">
+                        <h3 class="title">Titolo: {{contenuto.title}}</h3>
+                        <span class="title">Titolo originale: {{contenuto.original_title || contenuto.original_name}} </span>
+                        <img class="bandiera-size" :src="'img/' + contenuto.original_language + '.jpeg'" :alt="contenuto.original_language">
+                        <span class="voto">
+                            <i v-for="i in filtered(contenuto.vote_average)" class="fas fa-star"></i>
+                            <i v-for="i in filteredStar(contenuto.vote_average)" class="far fa-star"></i>
+                        </span>
+                        <div class="trama">
+                            Trama: {{contenuto.overview}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         
