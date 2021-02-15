@@ -20,7 +20,8 @@ var app = new Vue({
         formato: 'w500',
         contenuti:[],
         series:[],
-        genereSelect:'Tutti i generi',
+        genereSelect:'',
+        generi:'',
         query:'',
         apikey:'9c849102cf7097b31d1314854e343536',
         lang: 'it-IT'
@@ -37,8 +38,12 @@ var app = new Vue({
                 })
                 .then((result) => {
                     this.contenuti = result.data.results;
+                    this.query = '';
+
                 })
                 .catch((error)=> console.log(error));
+
+
             axios
                 .get('https://api.themoviedb.org/3/search/tv', {
                     params: {
@@ -49,8 +54,10 @@ var app = new Vue({
                 })
                 .then((result) => {
                     this.series.concat(result.data.results);
+                    this.query = '';
+                    
                 })
-                .catch((error) => console.log(error))
+                .catch((error) => console.log(error));
         },
         
         filtered (voto) {

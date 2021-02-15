@@ -135,7 +135,10 @@ header img {
 #selettore{
     width: 200px;
     position: absolute;
-    left: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    outline: none;
+    border: 1px solid black;
 }
 
 
@@ -200,22 +203,7 @@ header img {
 
 
 .trama{
-
+    overflow-y: auto;
     word-break: break-word;
 }
 
-
-/* 
-.layer i {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-font-size: 70px;
-color: white;
-display: none;
-}
-
-.layer:hover i {
-display: inline;
-} */ */

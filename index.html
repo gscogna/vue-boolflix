@@ -71,9 +71,15 @@
                     Per continuare a seguirci senza censure date un'occhiata qui</p>
             </div>
         </section>
+
+
+
+
         <select id="selettore" v-model="genereSelect">
-            <option></option>
+            <option value="">Tutti</option>
+            <option v-for="genere in generi" :value="genere.id">{{ genere.name }}</option>
         </select>
+
 
         <!-- sezione contatti -->
         <section class="contatti">
