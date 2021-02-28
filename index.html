@@ -38,7 +38,7 @@
         </div>
         <!-- sezione input -->
         <div class="header-input">
-            <input type="text" v-model="query" @keyup.enter="ricerca" placeholder="Cerca...">
+            <input type="text" v-model="query" @keyup.enter="search" placeholder="Cerca...">
             <i class="fas fa-search"></i>
         </div>
     </header>
@@ -75,27 +75,31 @@
 
 
 
-        <select id="selettore" v-model="genereSelect">
-            <option value="">Tutti</option>
-            <option v-for="genere in generi" :value="genere.id">{{ genere.name }}</option>
+        <select id="selettore" v-model="generiValue">
+            <option :value="genere" v-for="genere in generi"> {{genere}} </option>
         </select>
 
 
         <!-- sezione contatti -->
         <section class="contatti">
             <div class="films-container container">
-                <div class="film" v-for="contenuto in contenuti">
-                    <img :src="(contenuto.backdrop_path == null) ? alterantiveFoto :preselezione + formato + contenuto.backdrop_path" :alt="contenuto.title">
+                <div class="film" v-for="result in risultati" v-if="generiValue == 'All' || result.genereName.includes(generiValue)">
+                    <img :src="(result.backdrop_path == null) ? alterantiveFoto :preselezione + formato + result.backdrop_path" :alt="result.title">
                     <div class="layer">
-                        <h3 class="title">Titolo: {{contenuto.title}}</h3>
-                        <span class="title">Titolo originale: {{contenuto.original_title || contenuto.original_name}} </span>
-                        <img class="bandiera-size" :src="'img/' + contenuto.original_language + '.jpeg'" :alt="contenuto.original_language">
+                        <h3 v-if="result.title || result.name" class="title">Titolo: {{result.title}}</h3>
+                        <span class="title">Genere: {{result.genereName}} </span>
+                        <p>Cast:
+                            <span v-for="(i,index) in result.cast">
+                                {{ i }}<span v-if="index!=4"> - </span>
+                            </span>
+                        </p>
+                        <img class="bandiera-size" :src="'img/' + result.original_language + '.jpeg'" :alt="result.original_language">
                         <span class="voto">
-                            <i v-for="i in filtered(contenuto.vote_average)" class="fas fa-star"></i>
-                            <i v-for="i in filteredStar(contenuto.vote_average)" class="far fa-star"></i>
+                            <i v-for="i in filtered(result.vote_average)" class="fas fa-star"></i>
+                            <i v-for="i in filteredStar(result.vote_average)" class="far fa-star"></i>
                         </span>
                         <div class="trama">
-                            Trama: {{contenuto.overview}}
+                            Trama: {{result.overview}}
                         </div>
                     </div>
                 </div>
